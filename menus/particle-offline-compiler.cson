@@ -1,50 +1,69 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Compile locally + DFU upload'
+      'label': 'Compile Locally'
       'command': 'particle-offline-compiler:compile'
     }
     {
-      'label': 'Compile locally + attempt OTA update (Core)'
-      'command': 'particle-offline-compiler:compileOTA'
+      'label': 'Compile Locally + DFU Upload'
+      'command': 'particle-offline-compiler:compileDFU'
+    }
+    {
+      'label': 'Attempt OTA Update'
+      'command': 'particle-offline-compiler:OTAU'
     }
     { type: 'separator' }
   ]
 'menu': [
   {
-    'label': 'Particle.offline'
+    'label': 'Compile'
     'submenu': [
       {
-        'label': 'Compile locally + DFU upload'
-        'command': 'particle-offline-compiler:compile'
-      }
-      {
-        'label': 'Compile locally + attempt OTA update (Core)'
-        'command': 'particle-offline-compiler:compileOTA'
-      }
-      { type: 'separator' }
-      {
-        'label': 'Target platform'
-        'submenu': [
+      'label': 'Compile Options'
+      'submenu': [
           {
             type: 'radio'
-            'label': 'Photon'
-            'command': 'particle-offline-compiler:platformPhoton'
+            'label': 'Compile User Part Only'
+            'command': 'particle-offline-compiler:setCompileUser'
           }
           {
             type: 'radio'
-            'label': 'P1'
-            'command': 'particle-offline-compiler:platformP1'
+            'label': 'Compile User and System Parts'
+            'command': 'particle-offline-compiler:setCompileUserSystem'
           }
           {
             type: 'radio'
-            'label': 'Core'
-            'command': 'particle-offline-compiler:platformCore'
+            'label': 'Compile Bootloader'
+            'command': 'particle-offline-compiler:setCompileBootloader'
+          }
+          { type: 'separator' }
+          {
+            type: 'radio'
+            'label': 'Don\'t use \"Clean\"'
+            'command': 'particle-offline-compiler:setDontUseClean'
+          }
+          {
+            type: 'radio'
+            'label': 'Use \"Clean\" -> Complete Rebuild'
+            'command': 'particle-offline-compiler:setUseClean'
           }
         ]
       }
       {
-        'label': 'DFU serial port'
+        'label': 'Compile Locally'
+        'command': 'particle-offline-compiler:compile'
+      }
+      {
+        'label': 'Compile Locally + DFU Upload'
+        'command': 'particle-offline-compiler:compileDFU'
+      }
+      {
+        'label': 'Attempt OTA Update'
+        'command': 'particle-offline-compiler:OTAU'
+      }
+      { type: 'separator' }
+      {
+        'label': 'DFU Serial Port'
         'submenu': [
           {
             'label': '[refresh DFU serial device list]'
@@ -54,7 +73,7 @@
       }
       { type: 'separator' }
       {
-        'label': 'Toggle compile/upload CONSOLE'
+        'label': 'Toggle Developer Tools Console'
         'command': 'window:toggle-dev-tools'
       }
     ]

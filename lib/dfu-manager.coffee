@@ -36,17 +36,26 @@ class DFUManager
     stdout = (output) => @processSerialList(output)
 
     # stderr triggers only if there's an error - useful for finding out what happened!
-    stderr = (err) -> console.log("[getPorts] STDERR:", err)
+    stderr = (err) ->
+      console.log("[getPorts] STDERR:", err)
+      #@consolePanel.warn("[compile] STDERR:"+err.toString())
     exit = (code) ->
       switch code
         when 1
           # no devices found, alert
           console.log("[getPorts] No DFU devices found!")
+          #@consolePanel.warn("[getPorts] No DFU devices found!")
         when 2
           # some other error, alert
           console.log("[getPorts] Something weird happened. Sorry.")
+          #@consolePanel.error("[getPorts] Exited with 2 - Something weird happened. Sorry.")
 
-    @_getPortsProcess = new BufferedProcess({command, args, stdout, stderr, exit})
+    @_getPortsProcess = new BufferedProcess #({command, args, stdout, stderr, exit})
+        command: command
+        args: args
+        stdout: stdout.bind @
+        stderr: stderr.bind @
+        exit: exit.bind @
 
   processSerialList: (output) =>
     # regex to split lines if multiple devices are found
@@ -65,15 +74,16 @@ class DFUManager
         devShortName = devName.substring(9)
         newSerialDeviceMenu = atom.menu.add [
           {
-            label: 'Particle.offline'
+            label: 'Compile'
             submenu : [
               {
-                'label': 'DFU serial port'
+                'label': 'DFU Serial Port'
                 'submenu': [
                   {
                     type: 'radio'
                     'label': devShortName
                     'command': "#{@packageName}:#{devShortName}"
+                    #@consolePanel.log("[processSerialList] Device found #{devShortName}")
                   }]}]}
         ]
         # console.log("#{@packageName}:#{devShortName}", devName)
@@ -92,6 +102,7 @@ class DFUManager
 
   setSerialPort: (devName) ->
     console.log("Serial port changed to:", devName)
+    #@consolePanel.log("Serial port changed to:"+devName)
     atom.config.set("#{@packageName}.serialPort", devName)
 
   clearPorts: ->
