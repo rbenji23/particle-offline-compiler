@@ -87,7 +87,7 @@ If you skip this step, the compile will _not_ be able to find `arm-none-eabi-gcc
 
 This is a work in progress.
 
-At this point the package (0.2.2) is only tested on OSX 10.13.1, Atom 1.19.0+ and Particle Dev 0.2.3.
+At this point the package (0.2.2) is only tested on OSX 10.13.1, Atom 1.19.0 and Particle Dev 0.2.3.
 
 ~~Compiler output is currently dumped out the Javascript console – sorry to those who prefer spiffier GUIs, but the console is good enough for now to figure out what's going on during the compile process. Perhaps a proper view with syntax coloring can be considered in the future.~~
 
