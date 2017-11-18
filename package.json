@@ -1,7 +1,7 @@
 {
   "name": "particle-offline-compiler",
   "main": "./lib/particle-offline-compiler",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "100% offline compiling + upload workflow for Particle devices. Please see readme for prerequisites.",
   "keywords": [
     "particle",
@@ -22,7 +22,7 @@
     },
     "particle-dev-profiles": {
       "versions": {
-        "^0.0.1": "consumeProfiles"
+        "^0.0.2": "consumeProfiles"
       }
     },
     "tool-bar": {

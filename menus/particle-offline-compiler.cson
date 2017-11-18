@@ -9,6 +9,10 @@
       'command': 'particle-offline-compiler:compileDFU'
     }
     {
+      'label': 'DFU Upload'
+      'command': 'particle-offline-compiler:usbFlash'
+    }
+    {
       'label': 'Attempt OTA Update'
       'command': 'particle-offline-compiler:OTAU'
     }
@@ -56,6 +60,10 @@
       {
         'label': 'Compile Locally + DFU Upload'
         'command': 'particle-offline-compiler:compileDFU'
+      }
+      {
+        'label': 'DFU Upload'
+        'command': 'particle-offline-compiler:usbFlash'
       }
       {
         'label': 'Attempt OTA Update'
