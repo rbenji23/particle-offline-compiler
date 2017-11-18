@@ -1,3 +1,8 @@
+## 0.2.2 - Updates with Particle Dev
+
+* Updated to interact with new Particle Profiles Package
+* Added Windows key shortcuts
+
 ## 0.2.0 - Major Changes
 
 * Forked Version
